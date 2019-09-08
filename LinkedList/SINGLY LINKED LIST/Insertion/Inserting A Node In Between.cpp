@@ -5,6 +5,11 @@ class node
 public:
     int data;
     node *next;
+    node(int data =0)
+    {
+        this->data = data;
+        next = nullptr;
+    }
 };
 void printlist(node *head)
 {

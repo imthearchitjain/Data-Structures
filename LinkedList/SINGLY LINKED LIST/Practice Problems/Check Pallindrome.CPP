@@ -1,4 +1,6 @@
-#include<iostream>
+
+#include <iostream>
+#include <stack>
 using namespace std;
 class node
 {
@@ -6,76 +8,107 @@ public:
     int data;
     node *next;
 };
-int length(node *head)
-{
-    int length = 0;
-    while (head != nullptr)
-    {
-        length++;
-        head = head->next;
-    }
-    return length;
-}
-void printlist(node *head)
-{
 
-    while (head != nullptr)
-    {
-        cout << head->data << " ";
-        head = head->next;
-    }
-}
-node * copy_reverse_list(const node *head)
-{
-    node *nhead = new node();
 
-    nhead->data = head->data;
-    nhead->next = nullptr;
-    head = head->next;
-    while (head != nullptr)
-    {
-        node *temp = new node();
-        temp->data = head->data;
-        temp->next = nhead;
-        nhead = temp;
-        head = head->next;
-    }
-    return nhead;
-}
-bool palindrome_list(node *head1, node *head2)
+bool isPal(node *head)
 {
-    bool status = true;
-    while(head1!=nullptr)
+    if(head==nullptr)
+        return false;
+    stack<int>s;
+    node *p=head;
+    while(p)
     {
-        if (head1->data != head2->data)
-        {
-            status = false;
-            break;
+        s.push(p->data);
+        p=p->next;
+    }
+    node *q=head;
+    while(!s.empty())
+    {
+        if(s.top()!=q->data)
+            return false;
+        else {
+            q=q->next;
+            s.pop();
         }
-        head1=haed1->next;
-        head2=head2->next;
-    }
-    return status;
+    }return true;
 }
+void reverse2(node **head)
+{
+    node *q=*head;
+    node *p,*r=nullptr;
+    while (q) {
+        p=q->next;
+        q->next=r;
+        r=q;
+        q=p;
+        
+    }*head=r;
+}
+bool compare(node *head1,node *head2)
+{
+    if (head1 == nullptr && head2 == nullptr)
+        return false;
+    
+    node *p=head1;
+    node *q=head2;
+    while(p && q)
+    {
+        if(p->data!=q->data)
+            return false;
+        else {
+            p=p->next;
+            q=q->next;
+        }
+    }return true;
+}
+bool pal(node *head)
+{
+    if(head==nullptr)
+        return false;
+    node *fast=head;
+    node *slow=head;
+    node *slow_prev=head;
+    bool x=true;
+    if(head && head->next){
+    while(fast && fast->next)
+    {
+        fast=fast->next->next;
+        slow_prev=slow;
+        slow=slow->next;
+    }}
+    
+    slow_prev->next=nullptr;
+    node *head2=slow;
+    reverse2(&head2);
+   
+    x= compare(head, head2);
+    reverse2(&head2);
+    slow_prev->next=head2;
+    return x;
+    
+}
+
+
+
 int main()
 {
-    node *head = new node();
+    node *head = new node(); //FOR SIMPLICITY TAKING ONLY THREE NODES
     node *second = new node();
     node *third = new node();
     node *fourth = new node();
-    node *fifth = new node();
-
+    node *fifth=new node();
+    
     head->data = 1;      // ENTERING DATA TO NODES
     head->next = second; // LINKING HEAD NODE TO SECOND NODE
-
-    second->data = 2;
+    
+    second->data = 0;
     second->next = third; // LINKING SECOND TO THIRD
-    third->data = 3;
+    third->data = 0;
     third->next = fourth;
-    fourth->data = 4;
-    fourth->next = fifth;
-    fifth->data = 5;
-    fifth->next = nullptr;
-    node *head1 = copy_reverse_list(head);
-    cout << "\nPalindrome status : " << palindrome_list(head, head1);
+    fourth->data = 0;
+    fourth->next = fifth; // SET LAST NODE POINTER TO NULL
+    fifth->data=1;
+    fifth->next=nullptr;
+    cout<<pal(head)<<endl;
+    cout<<isPal(head)<<endl;
 }

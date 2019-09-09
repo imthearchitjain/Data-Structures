@@ -51,7 +51,7 @@ public:
         a[size]=x;
         size++;
         int i=size-1;
-        while(i>=0 && a[parent(i)]<a[i])
+        while(i!=0 && a[parent(i)]<a[i])
         {
             swap(a[parent(i)],a[i]);
             i=parent(i);
@@ -92,7 +92,7 @@ public:
         if(i>=size)
             return;
         a[i]=x;
-        while (i>=0 && a[parent(i)]<a[i]) {
+        while (i!=0 && a[parent(i)]<a[i]) {
             swap(a[i],a[parent(i)]);
             i=parent(i);
         }

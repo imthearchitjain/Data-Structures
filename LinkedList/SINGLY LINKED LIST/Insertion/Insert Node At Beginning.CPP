@@ -34,27 +34,7 @@ void insertbeg(node **head) // REMEMBER TO PASS THE HEAD AS DOUBLE POINTER
     newnode->next = *head;
     *head = newnode;
 }
-void insertatend(node **head) // REMEMBER TO PASS THE HEAD AS DOUBLE POINTER
-{
-    int data;
-    cout << "\nEnter the data for new node : ";
-    cin >> data;
-    node *newnode = new node();
-    newnode->data = data;
-    newnode->next = nullptr;
 
-    if (*head == nullptr)
-    {
-        *head = newnode;
-        return;
-    }
-    node *p = *head;
-    while (p->next != nullptr)
-    {
-        p = p->next;
-    }
-    p->next = newnode;
-}
 int main()
 {
     node *head = nullptr;

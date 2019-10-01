@@ -210,6 +210,33 @@ int count_leafNodes(node *root)
         return x + y;
     }
 }
+int count0_iterative(node *root)
+{
+    if(!root)
+        return 0;
+
+    queue<node *> q;
+    int c=0;
+    q.push(root);
+    while (!q.empty())
+    {
+        node *t = q.front();
+        if (!t->left && !t->right)
+        {
+            c++;
+        }
+        q.pop();
+        if (t->left)
+        {
+            q.push(t->left);
+        }
+        if (t->right)
+        {
+            q.push(t->right);
+        }
+    }
+    return c;
+}
 int count_deg2(node *root)
 {
     int x, y;

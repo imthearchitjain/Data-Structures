@@ -56,6 +56,31 @@ node *newNode(int data)
 
     return (Node);
 }
+void reverse_level_order(binaryTree *root)
+{
+    if(!root)
+        return;
+    stack<binaryTree *> s;
+    queue<binaryTree *> q;
+    q.push(root);
+    binaryTree *temp;
+    while(!q.empty())
+    {
+        temp = q.front();
+        q.pop();
+        s.push(temp);
+        if (temp->right)
+            q.push(temp->right);
+        if(temp->left)
+            q.push(temp->left);
+        
+    }
+    while(!s.empty())
+    {
+        cout << s.top()->data << " ";
+        s.pop();
+    }
+}
 int main()
 {
     node *root = newNode(1);

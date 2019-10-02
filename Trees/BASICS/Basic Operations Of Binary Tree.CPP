@@ -339,6 +339,36 @@ void levelOrder(node *root)
         printEachLevel(root, i);
     }
 }
+int height_iterative(node *root)
+{
+    if(!root)
+        return 0;
+    queue<node *> q;
+    node *temp;
+    q.push(root);
+    q.push(nullptr);
+    int level = 0;
+    while(!q.empty())
+    {
+        temp = q.front();
+        q.pop();
+        if (temp == nullptr)
+        {
+            if(!q.empty())
+                q.push(nullptr);
+            level++;
+        }
+        else
+        {
+            if (temp->left)
+                q.push(temp->left);
+            if (temp->right)
+                q.push(temp->right);
+        }
+        
+    }
+    return level;
+}
 int main()
 {
     binaryTree *tree = new binaryTree();

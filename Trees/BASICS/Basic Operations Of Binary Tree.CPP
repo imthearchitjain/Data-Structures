@@ -157,6 +157,29 @@ public:
         x->data = p;
     }
 };
+void findDeepest(node *root)
+{
+    if (!root)
+        return;
+    queue<node *> q;
+    node *t;
+    q.push(root);
+    while (!q.empty())
+    {
+        t = q.front();
+
+        q.pop();
+        if (t->left)
+        {
+            q.push(t->left);
+        }
+        if (t->right)
+        {
+            q.push(t->right);
+        }
+    }
+    cout << t->data << " ";
+}
 void preorder(node *root)
 {
 

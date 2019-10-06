@@ -80,6 +80,64 @@ void level_order_line(binaryTree *root)
         
     }
 }
+/*
+void level_order_line1(node *root)
+{
+    if (!root)
+        return;
+    queue<node *> q;
+    q.push(root);
+    q.push(nullptr);
+    while (!q.empty())
+    {
+        node *t = q.front();
+        q.pop();
+        if (t)
+        {
+            cout << t->data << " ";
+        }
+        if (!t)
+        {
+            cout << endl;
+            if (!q.empty())
+                q.push(nullptr);
+        }
+        else
+        {
+            if (t->left)
+                q.push(t->left);
+            if (t->right)
+                q.push(t->right);
+        }
+    }
+    return;
+}
+
+void level_order_line2(node *root)
+{
+    if (!root)
+        return;
+    queue<node *> q;
+    q.push(root);
+
+    while (!q.empty())
+    {
+        int count = q.size();
+        for (int i = 0; i < count; i++)
+        {
+            node *t = q.front();
+            q.pop();
+
+            cout << t->data << " ";
+            if (t->left)
+                q.push(t->left);
+            if (t->right)
+                q.push(t->right);
+        }
+        cout << endl;
+    }
+}
+*/
 
 int main()
 {

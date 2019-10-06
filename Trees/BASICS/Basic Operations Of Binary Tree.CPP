@@ -180,6 +180,15 @@ void findDeepest(node *root)
     }
     cout << t->data << " ";
 }
+
+void deleteTree(node *root)
+{
+    if (!root)
+        return;
+    deleteTree((root)->left);
+    deleteTree((root)->left);
+    free(root);
+}
 void preorder(node *root)
 {
 

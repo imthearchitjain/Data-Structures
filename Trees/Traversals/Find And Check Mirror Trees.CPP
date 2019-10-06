@@ -70,6 +70,44 @@ bool mirror(binaryTree *root1, binaryTree *root2)
         return 0;
     return mirror(root1->left, root2->right) && mirror(root1->right, root2->left);
 }
+/*
+void mirror_iterative(node *root)
+{
+    queue<node *> q;
+    if (!root)
+        return;
+    q.push(root);
+    while (!q.empty())
+    {
+        node *t = q.front();
+        q.pop();
+        swap(t->left, t->right);
+        if (t->left)
+            q.push(t->left);
+        if (t->right)
+            q.push(t->right);
+    }
+}
+node *mirror_recursive(node *root)
+{
+    if (!root)
+        return root;
+    node *t = root->left;
+    root->left = mirror_recursive(root->right);
+    root->right = mirror_recursive(t);
+    return root;
+}
+node *mirror_recursive2(node *root)
+{
+    if (root)
+    {
+        mirror_recursive2(root->left);
+        mirror_recursive2(root->right);
+        swap(root->left, root->right);
+    }
+    return root;
+}
+*/
 
 int main()
 {

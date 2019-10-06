@@ -42,6 +42,25 @@ bool check_continuous_tree(Btree *root)
     else
         return 0;
 }
+/*
+bool isContinuous(node *root)
+{
+    if (!root)
+        return true;
+    if (!root->left && !root->right)
+        return true;
+    bool l = 1, r = 1;
+    if (root->left)
+    {
+        l = abs(root->data - root->left->data) == 1;
+    }
+    if (root->right)
+    {
+        r = abs(root->data - root->right->data) == 1;
+    }
+    return l && r && isContinuous(root->left) && isContinuous(root->right);
+}
+*/
 int main()
 {
     Btree *root = new Btree(3);

@@ -90,7 +90,58 @@ int maxLevelSum(binaryTree *root)
     }
     return mlevel;
 }
+/*
+int Sum(queue<node *> q)
+{
+    int s = 0;
+    while (!q.empty())
+    {
+        node *t = q.front();
+        if (t)
+        {
+            s = s + t->data;
+        }
+        q.pop();
+    }
+    return s;
+}
+int maxSumLevel(node *root)
+{
+    if (!root)
+        return -1;
+    queue<node *> q;
+    int level = 0, maxlevel = 0;
+    int curr_sum = 0;
+    q.push(root);
+    q.push(nullptr);
+    curr_sum = root->data;
+    while (!q.empty())
+    {
+        node *t = q.front();
+        q.pop();
+        if (t == nullptr)
+        {
 
+            if (!q.empty())
+                q.push(nullptr);
+            level++;
+            if (Sum(q) > curr_sum)
+            {
+                curr_sum = Sum(q);
+                maxlevel = level;
+            }
+        }
+        else
+        {
+            if (t->left)
+                q.push(t->left);
+            if (t->right)
+                q.push(t->right);
+        }
+    }
+    return maxlevel;
+}
+*/
 int main()
 {
     int n;
